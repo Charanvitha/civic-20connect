@@ -13,6 +13,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import Login from "./pages/Login";
 import VerifyAadhaar from "./pages/VerifyAadhaar";
 import AdminDashboard from "./pages/admin/Dashboard";
+import RequireAuth from "@/components/app/RequireAuth";
 
 const queryClient = new QueryClient();
 
