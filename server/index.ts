@@ -29,6 +29,7 @@ export function createServer() {
 
   app.post("/api/sos", handleSos);
   app.post("/api/chat", handleChat);
+  app.get("/api/leaderboard", handleLeaderboard);
 
   return app;
 }
