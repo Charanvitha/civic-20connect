@@ -22,6 +22,8 @@ export default function Login() {
     });
     setLoading(false);
     if (!res.ok) return alert("Failed to send OTP");
+    const data = await res.json();
+    if (data.code) alert(`Demo OTP: ${data.code}`);
     setStage("otp");
   }
 
