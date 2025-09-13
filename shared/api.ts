@@ -1,6 +1,6 @@
 /**
  * Shared code between client and server
- * Types and helpers for the CivicLens app
+ * Types and helpers for the Civic Connect app
  */
 
 export interface DemoResponse {
