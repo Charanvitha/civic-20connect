@@ -14,7 +14,7 @@ export default function Layout() {
         <div className="container flex h-14 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-md bg-gradient-to-br from-blue-600 to-green-600" />
-            <span className="text-lg font-bold tracking-tight">CivicLens</span>
+            <span className="text-lg font-bold tracking-tight">Civic Connect</span>
             <Badge variant="secondary" className="ml-2">Beta</Badge>
           </Link>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
