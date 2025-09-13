@@ -62,96 +62,75 @@ export default function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/60">
-      <header className="sticky top-0 z-10 border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/50 dark:bg-background/70">
-        <div className="container flex h-14 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-md bg-gradient-to-br from-blue-600 to-green-600" />
-            <span className="text-lg font-bold tracking-tight">CivicLens</span>
-            <Badge variant="secondary" className="ml-2">Beta</Badge>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Languages className="h-4 w-4" />
-            <select value={lang} onChange={(e) => setLang(e.target.value)} className="bg-transparent outline-none">
-              <option value="en">English</option>
-              <option value="hi">हिंदी</option>
-              <option value="ta">தமிழ்</option>
-              <option value="te">తెలుగు</option>
-            </select>
-          </div>
-        </div>
-      </header>
+    <div>
+      <section className="py-6">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <Card className="overflow-hidden">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2"><Globe2 className="h-5 w-5 text-primary" /> Camera-First Reporting</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CaptureCamera onCapture={setImage} />
+              <div className="mt-4 grid gap-4">
+                <div>
+                  <div className="mb-2 text-sm font-medium">Category</div>
+                  <CategoryPicker value={category} onChange={setCategory} />
+                </div>
+                <div>
+                  <div className="mb-2 text-sm font-medium">Describe (voice or text)</div>
+                  <VoiceInput value={description} onChange={setDescription} placeholder="Describe the issue…" />
+                </div>
+                <div className="flex flex-wrap items-center gap-3 text-sm">
+                  <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1">
+                    <MapPin className="h-4 w-4 text-primary" />
+                    {coords ? (
+                      <span>
+                        {coords.lat.toFixed(4)}, {coords.lng.toFixed(4)}
+                      </span>
+                    ) : (
+                      <span>Getting location…</span>
+                    )}
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1">
+                    <UploadCloud className="h-4 w-4 text-green-600" /> One-tap submission
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button disabled={!canSubmit || submitting} onClick={submit} className="flex-1">
+                    Submit Report
+                  </Button>
+                  <Button variant="outline" onClick={() => setImage(null)} disabled={!image}>
+                    Retake
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-      <main className="container pb-24">
-        <section className="py-6">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <Card className="overflow-hidden">
+          <div>
+            <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2"><Globe2 className="h-5 w-5 text-primary" /> Camera-First Reporting</CardTitle>
+                <CardTitle className="flex items-center gap-2"><Trophy className="h-5 w-5 text-green-600" /> Your Profile</CardTitle>
               </CardHeader>
               <CardContent>
-                <CaptureCamera onCapture={setImage} />
-                <div className="mt-4 grid gap-4">
-                  <div>
-                    <div className="mb-2 text-sm font-medium">Category</div>
-                    <CategoryPicker value={category} onChange={setCategory} />
-                  </div>
-                  <div>
-                    <div className="mb-2 text-sm font-medium">Describe (voice or text)</div>
-                    <VoiceInput value={description} onChange={setDescription} placeholder="Describe the issue…" />
-                  </div>
-                  <div className="flex flex-wrap items-center gap-3 text-sm">
-                    <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1">
-                      <MapPin className="h-4 w-4 text-primary" />
-                      {coords ? (
-                        <span>
-                          {coords.lat.toFixed(4)}, {coords.lng.toFixed(4)}
-                        </span>
-                      ) : (
-                        <span>Getting location…</span>
-                      )}
-                    </span>
-                    <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1">
-                      <UploadCloud className="h-4 w-4 text-green-600" /> One-tap submission
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Button disabled={!canSubmit || submitting} onClick={submit} className="flex-1">
-                      Submit Report
-                    </Button>
-                    <Button variant="outline" onClick={() => setImage(null)} disabled={!image}>
-                      Retake
-                    </Button>
-                  </div>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <Stat label="Reports" value="—" />
+                  <Stat label="Resolved" value="—" />
+                  <Stat label="Points" value="—" />
+                </div>
+                <div className="mt-4">
+                  <label className="text-sm text-muted-foreground">Name</label>
+                  <Input placeholder="Citizen" disabled />
                 </div>
               </CardContent>
             </Card>
-
-            <div>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2"><Trophy className="h-5 w-5 text-green-600" /> Your Profile</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    <Stat label="Reports" value="—" />
-                    <Stat label="Resolved" value="—" />
-                    <Stat label="Points" value="—" />
-                  </div>
-                  <div className="mt-4">
-                    <label className="text-sm text-muted-foreground">Name</label>
-                    <Input placeholder="Citizen" disabled />
-                  </div>
-                </CardContent>
-              </Card>
-              <LeaderboardWidget />
-            </div>
+            <LeaderboardWidget />
           </div>
-        </section>
+        </div>
+      </section>
 
-        <Feed />
-        <Chatbot />
-      </main>
+      <Feed />
+      <Chatbot />
 
       <SOSFab />
     </div>
