@@ -6,6 +6,7 @@ import { createIssue, listIssues, updateIssue } from "./routes/issues";
 import { handleSos } from "./routes/sos";
 import { handleChat } from "./routes/chat";
 import { handleLeaderboard } from "./routes/leaderboard";
+import { sendOtp, verifyOtpRoute, verifyAadhaar } from "./routes/auth";
 
 export function createServer() {
   const app = express();
@@ -30,6 +31,11 @@ export function createServer() {
   app.post("/api/sos", handleSos);
   app.post("/api/chat", handleChat);
   app.get("/api/leaderboard", handleLeaderboard);
+
+  // Auth (mock)
+  app.post("/api/auth/send-otp", sendOtp);
+  app.post("/api/auth/verify-otp", verifyOtpRoute);
+  app.post("/api/auth/aadhaar/verify", verifyAadhaar);
 
   return app;
 }
