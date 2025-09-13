@@ -5,6 +5,7 @@ import { handleDemo } from "./routes/demo";
 import { createIssue, listIssues, updateIssue } from "./routes/issues";
 import { handleSos } from "./routes/sos";
 import { handleChat } from "./routes/chat";
+import { handleLeaderboard } from "./routes/leaderboard";
 
 export function createServer() {
   const app = express();
