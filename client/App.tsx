@@ -29,7 +29,9 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/login" element={<Login />} />
               <Route path="/verify-aadhaar" element={<VerifyAadhaar />} />
-              <Route path="/admin" element={<AdminDashboard />} />
+              <Route element={<RequireAuth />}>
+                <Route path="/admin" element={<AdminDashboard />} />
+              </Route>
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Route>
