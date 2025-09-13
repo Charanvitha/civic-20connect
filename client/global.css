@@ -36,9 +36,19 @@
     --accent: 47 95% 53%;
     --accent-foreground: 222 47% 11%;
 
+    /* Extra semantic colors */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 40 96% 52%;
+    --warning-foreground: 222 47% 11%;
+    --info: 217 91% 60%;
+    --info-foreground: 222 47% 11%;
+
     /* Red for SOS */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
+    --sos: 0 84% 60%;
+    --sos-foreground: 0 0% 100%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
@@ -79,8 +89,17 @@
     --accent: 47 95% 53%;
     --accent-foreground: 222 47% 11%;
 
+    --success: 142 71% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 40 96% 52%;
+    --warning-foreground: 222 47% 11%;
+    --info: 217 91% 66%;
+    --info-foreground: 222 47% 11%;
+
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
+    --sos: 0 72% 45%;
+    --sos-foreground: 0 0% 100%;
 
     --border: 217 33% 18%;
     --input: 217 33% 18%;
