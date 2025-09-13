@@ -23,7 +23,7 @@ export function createServer() {
   });
   app.get("/api/demo", handleDemo);
 
-  // CivicLens API
+  // Civic Connect API
   app.post("/api/report", createIssue);
   app.get("/api/issues", listIssues);
   app.patch("/api/issues/:id", updateIssue);
