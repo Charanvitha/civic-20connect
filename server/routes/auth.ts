@@ -8,8 +8,8 @@ export const sendOtp: RequestHandler = (req, res) => {
     return;
   }
   const code = createOtp(phone);
-  // In production, send via SMS provider; here we return masked info
-  res.json({ ok: true, message: "OTP sent", debugCode: process.env.NODE_ENV === "development" ? code : undefined });
+  // In production, send via SMS provider; here we return the code for demo purposes
+  res.json({ ok: true, message: "OTP sent", code });
 };
 
 export const verifyOtpRoute: RequestHandler = (req, res) => {
