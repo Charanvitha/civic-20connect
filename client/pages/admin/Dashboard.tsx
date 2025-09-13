@@ -14,7 +14,13 @@ export default function AdminDashboard() {
   });
 
   const updateMut = useMutation({
-    mutationFn: async ({ id, status }: { id: string; status: Issue["status"] }) => {
+    mutationFn: async ({
+      id,
+      status,
+    }: {
+      id: string;
+      status: Issue["status"];
+    }) => {
       const res = await fetch(`/api/issues/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -38,7 +44,11 @@ export default function AdminDashboard() {
       <h2 className="text-2xl font-bold">Admin Dashboard</h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-3">
         <Stat label="Reported" value={counts.reported} color="bg-red-500" />
-        <Stat label="In-progress" value={counts.in_progress} color="bg-yellow-500" />
+        <Stat
+          label="In-progress"
+          value={counts.in_progress}
+          color="bg-yellow-500"
+        />
         <Stat label="Resolved" value={counts.resolved} color="bg-green-500" />
       </div>
 
@@ -48,15 +58,45 @@ export default function AdminDashboard() {
         </CardHeader>
         <CardContent>
           <div className="divide-y">
-            {issues.length === 0 && <div className="py-6 text-muted-foreground">No reports yet.</div>}
+            {issues.length === 0 && (
+              <div className="py-6 text-muted-foreground">No reports yet.</div>
+            )}
             {issues.map((i) => (
-              <div key={i.id} className="py-3 flex flex-wrap items-center gap-3">
-                <div className="min-w-40 font-medium capitalize">{i.category}</div>
-                <div className="text-xs text-muted-foreground flex-1">{new Date(i.createdAt).toLocaleString()}</div>
+              <div
+                key={i.id}
+                className="py-3 flex flex-wrap items-center gap-3"
+              >
+                <div className="min-w-40 font-medium capitalize">
+                  {i.category}
+                </div>
+                <div className="text-xs text-muted-foreground flex-1">
+                  {new Date(i.createdAt).toLocaleString()}
+                </div>
                 <div className="flex items-center gap-2">
-                  <Button variant={i.status === "reported" ? "default" : "outline"} onClick={() => updateMut.mutate({ id: i.id, status: "reported" })}>Reported</Button>
-                  <Button variant={i.status === "in_progress" ? "default" : "outline"} onClick={() => updateMut.mutate({ id: i.id, status: "in_progress" })}>In-progress</Button>
-                  <Button variant={i.status === "resolved" ? "default" : "outline"} onClick={() => updateMut.mutate({ id: i.id, status: "resolved" })}>Resolved</Button>
+                  <Button
+                    variant={i.status === "reported" ? "default" : "outline"}
+                    onClick={() =>
+                      updateMut.mutate({ id: i.id, status: "reported" })
+                    }
+                  >
+                    Reported
+                  </Button>
+                  <Button
+                    variant={i.status === "in_progress" ? "default" : "outline"}
+                    onClick={() =>
+                      updateMut.mutate({ id: i.id, status: "in_progress" })
+                    }
+                  >
+                    In-progress
+                  </Button>
+                  <Button
+                    variant={i.status === "resolved" ? "default" : "outline"}
+                    onClick={() =>
+                      updateMut.mutate({ id: i.id, status: "resolved" })
+                    }
+                  >
+                    Resolved
+                  </Button>
                 </div>
               </div>
             ))}
@@ -67,7 +107,15 @@ export default function AdminDashboard() {
   );
 }
 
-function Stat({ label, value, color }: { label: string; value: number; color: string }) {
+function Stat({
+  label,
+  value,
+  color,
+}: {
+  label: string;
+  value: number;
+  color: string;
+}) {
   return (
     <Card>
       <CardContent className="pt-6">

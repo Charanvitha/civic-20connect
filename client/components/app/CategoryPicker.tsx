@@ -1,5 +1,14 @@
 import { cn } from "@/lib/utils";
-import { Trash2, TrafficCone, Lightbulb, Bug, Waves, AlertCircle, MapPin, Wrench } from "lucide-react";
+import {
+  Trash2,
+  TrafficCone,
+  Lightbulb,
+  Bug,
+  Waves,
+  AlertCircle,
+  MapPin,
+  Wrench,
+} from "lucide-react";
 
 const CATEGORIES = [
   { key: "pothole", label: "Pothole", icon: TrafficCone },
@@ -12,7 +21,7 @@ const CATEGORIES = [
   { key: "other", label: "Other", icon: MapPin },
 ] as const;
 
-export type CategoryKey = typeof CATEGORIES[number]["key"];
+export type CategoryKey = (typeof CATEGORIES)[number]["key"];
 
 interface Props {
   value: CategoryKey;
@@ -31,7 +40,9 @@ export default function CategoryPicker({ value, onChange }: Props) {
             onClick={() => onChange(c.key)}
             className={cn(
               "flex flex-col items-center justify-center rounded-xl border p-3 text-xs hover:bg-accent transition",
-              active ? "bg-primary text-primary-foreground border-primary" : "bg-card/50",
+              active
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-card/50",
             )}
           >
             <Icon className="mb-1 h-5 w-5" />

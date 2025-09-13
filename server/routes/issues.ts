@@ -13,8 +13,14 @@ const genId = () => Math.random().toString(36).slice(2, 10);
 
 export const createIssue: RequestHandler = (req, res) => {
   const body = req.body as CreateIssueRequest;
-  if (!body?.location || typeof body.location.lat !== "number" || typeof body.location.lng !== "number") {
-    res.status(400).json({ error: "location.lat and location.lng are required" });
+  if (
+    !body?.location ||
+    typeof body.location.lat !== "number" ||
+    typeof body.location.lng !== "number"
+  ) {
+    res
+      .status(400)
+      .json({ error: "location.lat and location.lng are required" });
     return;
   }
   if (!body.category) {
@@ -44,7 +50,10 @@ export const createIssue: RequestHandler = (req, res) => {
 };
 
 export const listIssues: RequestHandler = (req, res) => {
-  const { status, category } = req.query as { status?: string; category?: string };
+  const { status, category } = req.query as {
+    status?: string;
+    category?: string;
+  };
   let issues = db.issues;
   if (status) issues = issues.filter((i) => i.status === status);
   if (category) issues = issues.filter((i) => i.category === category);

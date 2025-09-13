@@ -6,7 +6,9 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Globe2, Languages, MapPin, Trophy, UploadCloud } from "lucide-react";
 import CaptureCamera from "@/components/app/CaptureCamera";
-import CategoryPicker, { type CategoryKey } from "@/components/app/CategoryPicker";
+import CategoryPicker, {
+  type CategoryKey,
+} from "@/components/app/CategoryPicker";
 import VoiceInput from "@/components/app/VoiceInput";
 import Feed from "@/components/app/Feed";
 import LeaderboardWidget from "@/components/app/LeaderboardWidget";
@@ -19,7 +21,9 @@ export default function Index() {
   const [description, setDescription] = useState("");
   const [lang, setLang] = useState("en");
   const [submitting, setSubmitting] = useState(false);
-  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null);
+  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(
+    null,
+  );
 
   useEffect(() => {
     // Acquire GPS on load
@@ -67,7 +71,10 @@ export default function Index() {
         <div className="grid gap-6 lg:grid-cols-2">
           <Card className="overflow-hidden">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><Globe2 className="h-5 w-5 text-primary" /> Camera-First Reporting</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <Globe2 className="h-5 w-5 text-primary" /> Camera-First
+                Reporting
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <CaptureCamera onCapture={setImage} />
@@ -77,8 +84,14 @@ export default function Index() {
                   <CategoryPicker value={category} onChange={setCategory} />
                 </div>
                 <div>
-                  <div className="mb-2 text-sm font-medium">Describe (voice or text)</div>
-                  <VoiceInput value={description} onChange={setDescription} placeholder="Describe the issue…" />
+                  <div className="mb-2 text-sm font-medium">
+                    Describe (voice or text)
+                  </div>
+                  <VoiceInput
+                    value={description}
+                    onChange={setDescription}
+                    placeholder="Describe the issue…"
+                  />
                 </div>
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1">
@@ -92,14 +105,23 @@ export default function Index() {
                     )}
                   </span>
                   <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1">
-                    <UploadCloud className="h-4 w-4 text-green-600" /> One-tap submission
+                    <UploadCloud className="h-4 w-4 text-green-600" /> One-tap
+                    submission
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Button disabled={!canSubmit || submitting} onClick={submit} className="flex-1">
+                  <Button
+                    disabled={!canSubmit || submitting}
+                    onClick={submit}
+                    className="flex-1"
+                  >
                     Submit Report
                   </Button>
-                  <Button variant="outline" onClick={() => setImage(null)} disabled={!image}>
+                  <Button
+                    variant="outline"
+                    onClick={() => setImage(null)}
+                    disabled={!image}
+                  >
                     Retake
                   </Button>
                 </div>
@@ -110,7 +132,9 @@ export default function Index() {
           <div>
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2"><Trophy className="h-5 w-5 text-green-600" /> Your Profile</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Trophy className="h-5 w-5 text-green-600" /> Your Profile
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid gap-3 sm:grid-cols-3">

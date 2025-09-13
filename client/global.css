@@ -131,8 +131,13 @@
     inset: -20% -10% auto auto;
     width: 60vw;
     height: 60vw;
-    background: radial-gradient(closest-side, hsl(var(--info)/0.25), transparent 65%),
-      radial-gradient(closest-side, hsl(var(--secondary)/0.18), transparent 60%);
+    background:
+      radial-gradient(closest-side, hsl(var(--info) / 0.25), transparent 65%),
+      radial-gradient(
+        closest-side,
+        hsl(var(--secondary) / 0.18),
+        transparent 60%
+      );
     filter: blur(30px);
     pointer-events: none;
     z-index: -1;

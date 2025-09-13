@@ -50,13 +50,25 @@ export default function Login() {
         <CardContent className="space-y-4">
           {stage === "phone" ? (
             <div className="space-y-3">
-              <Input placeholder="Phone (e.g. +919876543210)" value={phone} onChange={(e) => setPhone(e.target.value)} />
-              <Button onClick={sendOtp} disabled={loading || phone.length < 10}>Send OTP</Button>
+              <Input
+                placeholder="Phone (e.g. +919876543210)"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <Button onClick={sendOtp} disabled={loading || phone.length < 10}>
+                Send OTP
+              </Button>
             </div>
           ) : (
             <div className="space-y-3">
-              <Input placeholder="Enter OTP" value={code} onChange={(e) => setCode(e.target.value)} />
-              <Button onClick={verify} disabled={loading || code.length < 4}>Verify OTP</Button>
+              <Input
+                placeholder="Enter OTP"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+              />
+              <Button onClick={verify} disabled={loading || code.length < 4}>
+                Verify OTP
+              </Button>
             </div>
           )}
         </CardContent>

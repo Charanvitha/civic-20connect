@@ -14,19 +14,39 @@ export default function Layout() {
         <div className="container flex h-14 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-md bg-gradient-to-br from-blue-600 to-green-600" />
-            <span className="text-lg font-bold tracking-tight">Civic Connect</span>
-            <Badge variant="secondary" className="ml-2">Beta</Badge>
+            <span className="text-lg font-bold tracking-tight">
+              Civic Connect
+            </span>
+            <Badge variant="secondary" className="ml-2">
+              Beta
+            </Badge>
           </Link>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <Link to="/admin" className="hover:text-foreground">Admin</Link>
+            <Link to="/admin" className="hover:text-foreground">
+              Admin
+            </Link>
             {user ? (
-              <button onClick={() => { setUser(null); nav("/"); }} className="hover:text-foreground">Logout</button>
+              <button
+                onClick={() => {
+                  setUser(null);
+                  nav("/");
+                }}
+                className="hover:text-foreground"
+              >
+                Logout
+              </button>
             ) : (
-              <Link to="/login" className="hover:text-foreground">Login</Link>
+              <Link to="/login" className="hover:text-foreground">
+                Login
+              </Link>
             )}
             <div className="flex items-center gap-2">
               <Languages className="h-4 w-4" />
-              <select value={lang} onChange={(e) => setLang(e.target.value)} className="bg-transparent outline-none">
+              <select
+                value={lang}
+                onChange={(e) => setLang(e.target.value)}
+                className="bg-transparent outline-none"
+              >
                 <option value="en">English</option>
                 <option value="hi">हिंदी</option>
                 <option value="ta">தமிழ்</option>

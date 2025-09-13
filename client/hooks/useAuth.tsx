@@ -1,6 +1,10 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-export type AuthUser = { phone: string; token: string; aadhaarVerified?: boolean } | null;
+export type AuthUser = {
+  phone: string;
+  token: string;
+  aadhaarVerified?: boolean;
+} | null;
 
 const AuthCtx = createContext<{
   user: AuthUser;

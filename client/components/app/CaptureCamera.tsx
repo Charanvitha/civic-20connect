@@ -10,7 +10,9 @@ export default function CaptureCamera({ onCapture }: Props) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
-  const [facingMode, setFacingMode] = useState<"user" | "environment">("environment");
+  const [facingMode, setFacingMode] = useState<"user" | "environment">(
+    "environment",
+  );
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   useEffect(() => {
@@ -66,19 +68,39 @@ export default function CaptureCamera({ onCapture }: Props) {
       <div className="relative overflow-hidden rounded-xl border bg-black">
         {imagePreview ? (
           // Preview captured image
-          <img src={imagePreview} alt="Captured" className="w-full h-[360px] object-contain bg-black" />
+          <img
+            src={imagePreview}
+            alt="Captured"
+            className="w-full h-[360px] object-contain bg-black"
+          />
         ) : (
-          <video ref={videoRef} className="w-full h-[360px] object-cover" playsInline muted />
+          <video
+            ref={videoRef}
+            className="w-full h-[360px] object-cover"
+            playsInline
+            muted
+          />
         )}
         <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-3 px-4">
-          <Button onClick={flip} variant="secondary" className="bg-white/20 text-white hover:bg-white/30 backdrop-blur">
+          <Button
+            onClick={flip}
+            variant="secondary"
+            className="bg-white/20 text-white hover:bg-white/30 backdrop-blur"
+          >
             <Repeat /> Flip
           </Button>
-          <Button onClick={capture} className="bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button
+            onClick={capture}
+            className="bg-primary text-primary-foreground hover:bg-primary/90"
+          >
             <Camera className="mr-2" /> Capture
           </Button>
           {imagePreview && (
-            <Button onClick={() => setImagePreview(null)} variant="ghost" className="text-white hover:bg-white/20">
+            <Button
+              onClick={() => setImagePreview(null)}
+              variant="ghost"
+              className="text-white hover:bg-white/20"
+            >
               <CameraOff className="mr-2" /> Retake
             </Button>
           )}

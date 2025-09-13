@@ -15,7 +15,9 @@ export default function VoiceInput({ value, onChange, placeholder }: Props) {
   const [supported, setSupported] = useState(false);
 
   useEffect(() => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SR =
+      (window as any).SpeechRecognition ||
+      (window as any).webkitSpeechRecognition;
     if (SR) {
       setSupported(true);
       const rec = new SR();
@@ -51,12 +53,25 @@ export default function VoiceInput({ value, onChange, placeholder }: Props) {
   return (
     <div className="space-y-2">
       <div className="flex items-center gap-2">
-        <Button type="button" onClick={toggle} variant={listening ? "destructive" : "secondary"}>
-          {listening ? <MicOff className="mr-2" /> : <Mic className="mr-2" />} {listening ? "Stop" : "Voice"}
+        <Button
+          type="button"
+          onClick={toggle}
+          variant={listening ? "destructive" : "secondary"}
+        >
+          {listening ? <MicOff className="mr-2" /> : <Mic className="mr-2" />}{" "}
+          {listening ? "Stop" : "Voice"}
         </Button>
-        {!supported && <span className="text-xs text-muted-foreground">Voice input not supported on this browser.</span>}
+        {!supported && (
+          <span className="text-xs text-muted-foreground">
+            Voice input not supported on this browser.
+          </span>
+        )}
       </div>
-      <Textarea value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} />
+      <Textarea
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+      />
     </div>
   );
 }

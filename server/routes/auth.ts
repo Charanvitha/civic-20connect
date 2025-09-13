@@ -23,7 +23,10 @@ export const verifyOtpRoute: RequestHandler = (req, res) => {
     res.status(401).json({ error: "Invalid or expired OTP" });
     return;
   }
-  res.json({ ok: true, token: `mock-${Buffer.from(phone).toString("base64")}` });
+  res.json({
+    ok: true,
+    token: `mock-${Buffer.from(phone).toString("base64")}`,
+  });
 };
 
 export const verifyAadhaar: RequestHandler = (req, res) => {
